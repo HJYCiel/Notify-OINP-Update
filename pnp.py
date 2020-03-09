@@ -10,8 +10,8 @@ import json
 
 
 
-account_sid = 'AC6b3b47753df22c7067c6ea62a29b3d83'
-auth_token = '1f35d8f2e5105678191cd68ef1b5924d'
+account_sid = 'YOUR_ACCOUNT_SID' #get from Twilio
+auth_token = 'YOUR_AUTH_TOKEN' #get from Twilio
 client = Client(account_sid, auth_token)
 
 URL = "https://api.ontario.ca/api/drupal/page%2F2020-ontario-immigrant-nominee-program-updates?fields=nid,field_body_beta,body"
