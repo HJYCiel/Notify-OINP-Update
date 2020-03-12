@@ -15,7 +15,6 @@ auth_token = 'YOUR_AUTH_TOKEN' #get from Twilio
 client = Client(account_sid, auth_token)
 
 URL = "https://api.ontario.ca/api/drupal/page%2F2020-ontario-immigrant-nominee-program-updates?fields=nid,field_body_beta,body"
-now = datetime.datetime.now()
 length = 35557 # original str length of the current site
 
 r = requests.get(URL)
@@ -24,7 +23,7 @@ soup = BeautifulSoup(dict['body']['und'][0]['value'], 'lxml')
 
 while True:
     if len(r.text.encode('utf-8')) > length:
-
+        now = datetime.datetime.now()
         #send text message notification
         message = client.messages \
             .create(
@@ -39,7 +38,7 @@ while True:
         length=len(r.text.encode('utf-8')) # update str length
 
     else:
-
+        now = datetime.datetime.now()
         print("wait!  " + now.strftime("%Y-%m-%d %H:%M:%S")+"\nLast updated: "+soup.find_all('h3')[0].text) # show last modified date of the website
 
     time.sleep(60) # program runs every minute
